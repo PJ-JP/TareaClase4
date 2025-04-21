@@ -5,11 +5,13 @@
 </head>
 <body>
 <h1>Reportes de Empleados</h1>
-
+<a th:href="@{/}" style="text-decoration: none;">
+    <button type="button">Regresar al Inicio</button>
+</a>
 <ul>
-    <li><a th:href="@{/search/highsalary}">Empleados con salario mayor a 15000</a></li>
-    <li><a th:href="@{/search/departments}">Ciudades con departamentos con más de 3 empleados</a></li>
-    <li><a th:href="@{/search/experienced-managers}">Gerentes con más de 5 años de experiencia</a></li>
+    <li><a th:href="@{/search/ejer4/trabajos-sueldo-alto}">Reporte: Trabajos con sueldo alto</a></li>
+    <li><a th:href="@{/search/ejer4/departamentos-por-ubicacion}">Reporte: Departamentos por país y ciudad</a></li>
+    <li><a th:href="@{/search/ejer4/gerentes-experimentados}">Reporte: Gerentes experimentados</a></li>
 </ul>
 </body>
 </html>

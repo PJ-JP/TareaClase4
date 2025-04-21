@@ -6,6 +6,10 @@
 <body>
 <h1>Empleados</h1>
 
+<a th:href="@{/}" style="text-decoration: none;">
+    <button type="button">Regresar al Inicio</button>
+</a>
+
 <form th:action="@{/employees}" method="get">
     <input type="text" name="search" placeholder="Buscar..." />
     <button type="submit">Buscar</button>

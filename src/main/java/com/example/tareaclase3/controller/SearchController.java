@@ -29,15 +29,29 @@ public class SearchController {
         return "search/highsalary";
     }
 
-    @GetMapping("/departments")
-    public String departmentsWithMoreThan3Employees(Model model) {
-        model.addAttribute("list", departmentRepo.findDepartmentsWithMoreThan3Employees());
-        return "search/departments";
-    }
+
 
     @GetMapping("/experienced-managers")
     public String experiencedManagers(Model model) {
         model.addAttribute("list", employeeRepo.findExperiencedManagers());
         return "search/experienced_managers";
+    }
+    @GetMapping("/ejer4/trabajos-sueldo-alto")
+    public String trabajosDeEmpleadosConSueldoAlto(Model model) {
+        model.addAttribute("lista", employeeRepo.findWorkHistoryOfEmployeesWithHighSalary(15000));
+        return "search/ej4_trabajos_sueldo_alto";
+    }
+
+
+    @GetMapping("/ejer4/departamentos-por-ubicacion")
+    public String departamentosPorUbicacion(Model model) {
+        model.addAttribute("lista", departmentRepo.reportDepartmentsByCountryAndCity());
+        return "search/ej4_departamentos_ubicacion";
+    }
+
+    @GetMapping("/ejer4/gerentes-experimentados")
+    public String gerentesConExperiencia(Model model) {
+        model.addAttribute("lista", departmentRepo.reportExperiencedManagers(5 * 365));
+        return "search/ej4_gerentes_experimentados";
     }
 }

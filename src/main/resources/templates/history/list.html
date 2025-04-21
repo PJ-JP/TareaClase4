@@ -5,7 +5,9 @@
 </head>
 <body>
 <h1>Historial de Empleados</h1>
-
+<a th:href="@{/}" style="text-decoration: none;">
+    <button type="button">Regresar al Inicio</button>
+</a>
 <div style="display: flex">
 <form th:action="@{/history}" method="get">
     <input type="text" name="search" placeholder="Buscar historial..." />

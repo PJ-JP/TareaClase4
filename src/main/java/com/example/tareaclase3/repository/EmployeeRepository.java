@@ -1,6 +1,7 @@
 package com.example.tareaclase3.repository;
 
 
+import com.example.tareaclase3.dto.JobReportProjection;
 import com.example.tareaclase3.entity.Employee;
 import org.springframework.data.jpa.repository.*;
 import org.springframework.stereotype.Repository;
@@ -31,4 +32,17 @@ public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
         AND e.employee_id IN (SELECT manager_id FROM departments)
         """, nativeQuery = true)
     List<Employee> findExperiencedManagers();
+
+    @Query(value = """
+    SELECT e.first_name as firstName, e.last_name as lastName,
+           jh.start_date as startDate, jh.end_date as endDate,
+           j.job_title as jobTitle
+    FROM employees e
+    JOIN job_history jh ON e.employee_id = jh.employee_id
+    JOIN jobs j ON jh.job_id = j.job_id
+    WHERE e.salary > :salary
+    """, nativeQuery = true)
+    List<JobReportProjection> findWorkHistoryOfEmployeesWithHighSalary(@Param("salary") double salary);
+
+
 }
